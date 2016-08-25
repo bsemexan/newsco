@@ -43,8 +43,11 @@ public class NewsFeedAdapter extends ArrayAdapter<NewsFeed> {
         TextView titleTextView = (TextView) listItemView.findViewById(R.id.title_field);
         titleTextView.setText(currentNews.getTitle());
 
-        TextView authorTextView = (TextView) listItemView.findViewById((R.id.author_field));
-        authorTextView.setText(currentNews.getAuthor());
+        TextView authorTextView = (TextView) listItemView.findViewById((R.id.url_field));
+        authorTextView.setText(currentNews.getUrl());
+
+        TextView typeTextView = (TextView) listItemView.findViewById((R.id.type_field));
+        typeTextView.setText(currentNews.getType());
 
         return listItemView;
     }

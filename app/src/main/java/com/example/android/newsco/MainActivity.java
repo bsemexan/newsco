@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     private static final String LOG_TAG = MainActivity.class.getName();
 
     private static final String GUARDIAN_REQUEST_URL =
-            "http://content.guardianapis.com/search?q=debate%20AND%20economy&tag=politics/politics&from-date=2014-01-01&api-key=294fcf35-e262-4ae1-a20f-acd85b56ec17";
+            "http://content.guardianapis.com/search?order-by=newest&q=football&api-key=294fcf35-e262-4ae1-a20f-acd85b56ec17";
 
     private static final int GUARDIAN_LOADER_ID = 1;
 

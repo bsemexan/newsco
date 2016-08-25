@@ -159,21 +159,21 @@ public class QueryUtils {
                 // For a given earthquake, extract the JSONObject associated with the
                 // key called "properties", which represents a list of all properties
                 // for that earthquake.
-                JSONObject properties = currentNews.getJSONObject("webTitle");
+                JSONObject properties = currentNews.getJSONObject("response");
 
 
                 // Extract the value for the key called "title"
-                String title = properties.getString("title");
+                String title = properties.getString("webTitle");
 
-                // Extract the value for the key called "author"
-                String author = properties.getString("author");
+                String type = properties.getString("type");
+
 
                 // Extract the value for the key called "url"
-                String url = properties.getString("url");
+                String url = properties.getString("webUrl");
 
                 // Create a new {@link NewsFeed} object with title, author,
                 // and url from the JSON response.
-                NewsFeed news = new NewsFeed(title, author, url);
+                NewsFeed news = new NewsFeed(type, title, url);
 
                 // Add the new {@link NewsFeed} to the list of news.
                 newsS.add(news);

@@ -5,38 +5,40 @@ package com.example.android.newsco;
  */
 public class NewsFeed {
 
-    private final String author;
+    private final String mType;
 
-    private final String title;
+    private final String mTitle;
 
     private String mUrl;
 
-    public NewsFeed(String NewsAuthor, String NewsTitle, String url){
-        author = NewsAuthor;
-        title = NewsTitle;
-        url = mUrl;
+    public NewsFeed(String type, String title, String url){
+        mType = type;
+        mTitle = title;
+        mUrl = url;
     }
 
     /**
      * Returns the author.
      */
 
-    public String getAuthor() {
+    public String getType() {
 
-        return author;
+        return mType;
     }
 
     /**
      * Returns the title
      */
     public String getTitle() {
-        return title;
+
+        return mTitle;
     }
 
     /**
      * Returns the website URL to find more information about the article.
      */
     public String getUrl() {
+
         return mUrl;
     }
 }
