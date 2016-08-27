@@ -9,7 +9,20 @@ public class NewsFeed {
 
     private final String mTitle;
 
-    private String mUrl;
+    private final String mUrl;
+
+    private String mContributor;
+
+
+
+
+
+    public NewsFeed(String type, String title, String url, String contributor){
+        mType = type;
+        mTitle = title;
+        mUrl = url;
+        mContributor = contributor;
+    }
 
     public NewsFeed(String type, String title, String url){
         mType = type;
@@ -19,6 +32,12 @@ public class NewsFeed {
 
     /**
      * Returns the author.
+     */
+    public String getContributor(){
+        return mContributor;
+    }
+    /**
+     * Returns the type.
      */
 
     public String getType() {
@@ -41,4 +60,5 @@ public class NewsFeed {
 
         return mUrl;
     }
+
 }

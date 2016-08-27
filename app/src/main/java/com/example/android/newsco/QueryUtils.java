@@ -32,7 +32,7 @@ public class QueryUtils {
     /**
      * Query the GUARDIAN dataset and return a list of {@link NewsFeed} objects.
      */
-    public static List<NewsFeed> fetchEarthquakeData(String requestUrl) {
+    public static List<NewsFeed> fetchNewsData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
         // Perform HTTP request to the URL and receive a JSON response back
@@ -164,13 +164,19 @@ public class QueryUtils {
 
                 String type = currentNews.getString("type");
 
+                // Extract the value for the key called "contributor"
+                String contributor = null;
+                if (currentNews.has("contributor")) {
+                    contributor = currentNews.getString("contributor");
+                }
+
 
                 // Extract the value for the key called "url"
                 String url = currentNews.getString("webUrl");
 
-                // Create a new {@link NewsFeed} object with title, author,
+                // Create a new {@link NewsFeed} object with title, author,contributor
                 // and url from the JSON response.
-                NewsFeed news = new NewsFeed(type, title, url);
+                NewsFeed news = new NewsFeed(type, title, url, contributor);
 
                 // Add the new {@link NewsFeed} to the list of news.
                 newsS.add(news);
@@ -183,7 +189,7 @@ public class QueryUtils {
             Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of news
         return newsS;
     }
 

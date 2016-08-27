@@ -14,19 +14,25 @@ import java.util.List;
  */
 public class NewsFeedAdapter extends ArrayAdapter<NewsFeed> {
 
+    static class ViewHolder{
+        public TextView titleTextView;
+        public TextView authorTextView;
+        public TextView typeTextView;
+        public TextView contributorTextView;
+    }
     /**
      * Constructs a new {@link NewsFeedAdapter}.
      *
      * @param context of the app
-     * @param news    is the list of earthquakes, which is the data source of the adapter
+     * @param news    is the list of news, which is the data source of the adapter
      */
     public NewsFeedAdapter(Context context, List<NewsFeed> news) {
         super(context, 0, news);
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * Returns a list item view that displays information about the news
+     * in the list of news.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -36,18 +42,25 @@ public class NewsFeedAdapter extends ArrayAdapter<NewsFeed> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.feed_view, parent, false);
+
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.titleTextView = (TextView) listItemView.findViewById(R.id.title_field);
+            viewHolder.authorTextView = (TextView) listItemView.findViewById((R.id.url_field));
+            viewHolder.typeTextView = (TextView) listItemView.findViewById((R.id.type_field));
+            viewHolder.contributorTextView = (TextView) listItemView.findViewById(R.id.contributor_field);
+            listItemView.setTag(viewHolder);
         }
 
+        ViewHolder holder = (ViewHolder) listItemView.getTag();
         NewsFeed currentNews = getItem(position);
 
-        TextView titleTextView = (TextView) listItemView.findViewById(R.id.title_field);
-        titleTextView.setText(currentNews.getTitle());
 
-        TextView authorTextView = (TextView) listItemView.findViewById((R.id.url_field));
-        authorTextView.setText(currentNews.getUrl());
+        holder.typeTextView.setText(currentNews.getType());
+        holder.titleTextView.setText(currentNews.getTitle());
+        holder.contributorTextView.setText(currentNews.getContributor());
+        holder.authorTextView.setText(currentNews.getUrl());
 
-        TextView typeTextView = (TextView) listItemView.findViewById((R.id.type_field));
-        typeTextView.setText(currentNews.getType());
+
 
         return listItemView;
     }
